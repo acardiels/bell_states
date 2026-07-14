@@ -198,7 +198,7 @@ def generate_bell_state(state: BellState = "phi+", shots: int = 1024, save_image
             state=state,
             output_path=os.path.join(target_dir, f"results_{clean_state}.png"),
         )
-        
+
     return counts
 
 

@@ -36,14 +36,14 @@ def build_bell_circuit(state: BellState = "phi+") -> QuantumCircuit:
     Build the quantum circuit for the specified Bell state.
 
     The construction follows two steps:
-        1. Hadamard on qubit 0  →  creates superposition |+⟩ on q0
+        1. Hadamard on qubit 0  →  creates superposition |+⟩ on q_0
         2. CNOT (q0 → q1)       →  entangles both qubits
 
     Additional single-qubit corrections are applied before H to reach
     the other three Bell states:
-        |Φ-⟩  →  Z on q0 after H  (phase flip)
-        |Ψ+⟩  →  X on q1 before H  (bit flip on target)
-        |Ψ-⟩  →  X on q1 + Z on q0
+        |Φ-⟩  →  Z on q_0 after H  (phase flip)
+        |Ψ+⟩  →  X on q_1 before H  (bit flip on target)
+        |Ψ-⟩  →  X on q_1 + Z on q_0
 
     Args:
         state: One of "phi+", "phi-", "psi+", "psi-". Defaults to "phi+".
@@ -173,17 +173,32 @@ def generate_bell_state(state: BellState = "phi+", shots: int = 1024, save_image
     counts = run_simulation(qc, shots=shots)
 
     if save_images:
-        os.makedirs(images_dir, exist_ok=True)
+        # 1. Obtenemos la ruta absoluta de 'src/' (donde está este archivo)
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        
+        # 2. Subimos un nivel atrás (a la raíz 'bell_states/')
+        project_root = os.path.dirname(script_dir)
+        
+        # 3. Creamos la ruta definitiva hacia 'bell_states/images/'
+        target_dir = os.path.join(project_root, images_dir)
+        
+        # Creamos la carpeta por si acaso no existiera
+        os.makedirs(target_dir, exist_ok=True)
+        
+        # Limpiamos el nombre del estado para el archivo
+        clean_state = state.replace('+', 'plus').replace('-', 'minus')
+        
+        # Guardamos el circuito y los resultados usando la nueva ruta
         draw_circuit(
             qc,
-            output_path=os.path.join(images_dir, f"circuit_{state.replace('+','plus').replace('-','minus')}.png"),
+            output_path=os.path.join(target_dir, f"circuit_{clean_state}.png"),
         )
         plot_results(
             counts,
             state=state,
-            output_path=os.path.join(images_dir, f"results_{state.replace('+','plus').replace('-','minus')}.png"),
+            output_path=os.path.join(target_dir, f"results_{clean_state}.png"),
         )
-
+        
     return counts
 
 

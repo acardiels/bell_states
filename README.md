@@ -120,7 +120,7 @@ Available arguments (adjust according to your actual implementation):
 Example for generating all four states at once:
 
 ```bash
-python src/bell_states.py --state phi+ --shots 2048 --save
+python src/bell_states.py --state phi+ --shots 2048 --saveç
 ```
 
 > **Note:** check `src/bell_states.py` and update this argument table if your script uses different names or values.

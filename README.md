@@ -32,10 +32,10 @@ The four Bell states are obtained by applying a Hadamard gate (H) to the first q
 
 | State | Notation | Expression |
 |---|---|---|
-| Φ⁺ | `phi_plus` | (\|00⟩ + \|11⟩) / √2 |
-| Φ⁻ | `phi_minus` | (\|00⟩ − \|11⟩) / √2 |
-| Ψ⁺ | `psi_plus` | (\|01⟩ + \|10⟩) / √2 |
-| Ψ⁻ | `psi_minus` | (\|01⟩ − \|10⟩) / √2 |
+| Φ⁺ | `phi+` | (\|00⟩ + \|11⟩) / √2 |
+| Φ⁻ | `phi-` | (\|00⟩ − \|11⟩) / √2 |
+| Ψ⁺ | `psi+` | (\|01⟩ + \|10⟩) / √2 |
+| Ψ⁻ | `psi-` | (\|01⟩ − \|10⟩) / √2 |
 
 Each one is obtained from `Φ⁺` by applying additional gates (X and/or Z) before the CNOT gate, following the standard construction of entanglement circuits.
 

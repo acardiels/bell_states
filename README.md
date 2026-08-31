@@ -115,13 +115,12 @@ Available arguments (adjust according to your actual implementation):
 |---|---|---|
 | `--state` | Bell state to generate | `phi_plus`, `phi_minus`, `psi_plus`, `psi_minus`, `all` |
 | `--shots` | Number of simulation repetitions | Integer (default: 1024) |
-| `--save-images` | Saves the generated images to `images/` | Flag (enabled by default) |
-| `--output-dir` | Output folder for images | Path (default: `images/`) |
+| `--save` | Saves the generated images to `images/` | Flag (enabled by default) |
 
 Example for generating all four states at once:
 
 ```bash
-python src/bell_states.py --state phi+ --shots 2048
+python src/bell_states.py --state phi+ --shots 2048 --save
 ```
 
 > **Note:** check `src/bell_states.py` and update this argument table if your script uses different names or values.
